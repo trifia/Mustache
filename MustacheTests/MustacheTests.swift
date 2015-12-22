@@ -41,7 +41,7 @@ class MustacheTests: XCTestCase {
     }
     
     func testExample4() {
-        var lexer = Lexer("    * {{name}}\n    * {{age}}\n    * {{company}}\n    * {{{company}}}")
+        var lexer = Lexer("    * {{name}}\n    * {{age}}\n    * {{company}}\n    * {{{company}}}\n    * {{&company}}")
         do {
             let tokens = try lexer.tokenize()
             print(tokens)

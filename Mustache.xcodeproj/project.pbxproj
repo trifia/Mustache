@@ -15,6 +15,7 @@
 		AB9DCECA1C26A8BD00B277FC /* MustacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DCEC91C26A8BD00B277FC /* MustacheTests.swift */; };
 		ABCF38101C29655800B32850 /* Delimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF380F1C29655800B32850 /* Delimiter.swift */; };
 		ABCF38121C29659D00B32850 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38111C29659D00B32850 /* Token.swift */; };
+		ABCF38141C2967DA00B32850 /* Lookahead.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38131C2967DA00B32850 /* Lookahead.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		AB9DCECB1C26A8BD00B277FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABCF380F1C29655800B32850 /* Delimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delimiter.swift; sourceTree = "<group>"; };
 		ABCF38111C29659D00B32850 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		ABCF38131C2967DA00B32850 /* Lookahead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lookahead.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				AB3B66D71C2848CA00152024 /* Scanner.swift */,
 				ABCF380F1C29655800B32850 /* Delimiter.swift */,
 				ABCF38111C29659D00B32850 /* Token.swift */,
+				ABCF38131C2967DA00B32850 /* Lookahead.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				ABCF38121C29659D00B32850 /* Token.swift in Sources */,
 				ABCF38101C29655800B32850 /* Delimiter.swift in Sources */,
 				AB3B66DA1C2848CA00152024 /* Scanner.swift in Sources */,
+				ABCF38141C2967DA00B32850 /* Lookahead.swift in Sources */,
 				AB3B66D91C2848CA00152024 /* Mustache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

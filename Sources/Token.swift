@@ -18,6 +18,6 @@ extension Lexer {
         case SectionEnd(name: String)
         case Comment(value: String)
         case Partial(name: String)
-        case SetDelimiter(value: String)
+        case SetDelimiter(open: String, close: String)
     }
 }
