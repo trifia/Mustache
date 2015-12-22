@@ -104,7 +104,7 @@ struct Scanner {
             return ScanResult(characters: self.characters, before: before, match: nil, consumed: consumed)
         }
         let range = startIndex..<endIndex
-        guard characters == self.characters[range] else {
+        guard characters.elementsEqual(self.characters[range]) else {
             return ScanResult(characters: self.characters, before: before, match: nil, consumed: consumed)
         }
         self.index = endIndex
@@ -127,7 +127,7 @@ struct Scanner {
                 return ScanResult(characters: self.characters, before: before, match: nil, consumed: consumed)
             }
             let range = startIndex..<endIndex
-            guard characters == self.characters[range] else {
+            guard characters.elementsEqual(self.characters[range]) else {
                 index = index.successor()
                 continue
             }

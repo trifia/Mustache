@@ -6,21 +6,6 @@
 //  Copyright © 2015 Trifia. All rights reserved.
 //
 
-extension String.CharacterView : Equatable {
-}
-public func ==(lhs: String.CharacterView, rhs: String.CharacterView) -> Bool {
-    if lhs.count == rhs.count {
-        for (lc, rc) in zip(lhs, rhs) {
-            if lc != rc {
-                return false
-            }
-        }
-        return true
-    } else {
-        return false
-    }
-}
-
 // The lexical analysis phase is near context free. The only exception is to implement Set Delimiter Tag which modify how the lexer find subsequent tags.
 struct Lexer {
     enum Token {
