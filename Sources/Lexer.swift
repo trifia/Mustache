@@ -8,29 +8,6 @@
 
 // The lexical analysis phase is near context free. The only exception is to implement Set Delimiter Tag which modify how the lexer find subsequent tags.
 struct Lexer {
-    enum Token {
-        // Tag Types
-        case Variable(name: String, escaped: Bool)
-        case SectionBegin(name: String, inverted: Bool)
-        case SectionEnd(name: String)
-        case Comment(value: String)
-        case Partial(name: String)
-        case SetDelimiter(value: String)
-        
-        // Others
-        case Static(value: String)
-    }
-    
-    struct Delimiter {
-        let open: String
-        let close: String
-        
-        init(open: String = "{{", close: String = "}}") {
-            self.open = open
-            self.close = close
-        }
-    }
-    
     // Context
     
     /// The delimiter used to identify tag. Default to `{{` and `}}`.
@@ -121,7 +98,7 @@ struct Lexer {
                 fallthrough
             case "{": // {
                 self.scanner.skip(&peekResult)
-                delimiter = Delimiter(open: delimiter.open + "{", close: "}" + delimiter.close)
+                delimiter = delimiter.modifiedDelimiterWithOpen("{", close: "}")
                 let updatedOpenDelimiterRange = openDelimiterRange.startIndex..<peekRange.endIndex
                 let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: updatedOpenDelimiterRange)
                 tagToken = Token.Variable(name: String(self.scanner[tagRange]), escaped: false)

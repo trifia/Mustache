@@ -13,6 +13,8 @@
 		AB9DCEBE1C26A8BC00B277FC /* Mustache.h in Headers */ = {isa = PBXBuildFile; fileRef = AB9DCEBD1C26A8BC00B277FC /* Mustache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB9DCEC51C26A8BD00B277FC /* Mustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9DCEBA1C26A8BC00B277FC /* Mustache.framework */; };
 		AB9DCECA1C26A8BD00B277FC /* MustacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DCEC91C26A8BD00B277FC /* MustacheTests.swift */; };
+		ABCF38101C29655800B32850 /* Delimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF380F1C29655800B32850 /* Delimiter.swift */; };
+		ABCF38121C29659D00B32850 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38111C29659D00B32850 /* Token.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		AB9DCEC41C26A8BD00B277FC /* MustacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MustacheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9DCEC91C26A8BD00B277FC /* MustacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustacheTests.swift; sourceTree = "<group>"; };
 		AB9DCECB1C26A8BD00B277FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABCF380F1C29655800B32850 /* Delimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delimiter.swift; sourceTree = "<group>"; };
+		ABCF38111C29659D00B32850 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				AB3B66D51C2848CA00152024 /* Lexer.swift */,
 				AB3B66D61C2848CA00152024 /* Mustache.swift */,
 				AB3B66D71C2848CA00152024 /* Scanner.swift */,
+				ABCF380F1C29655800B32850 /* Delimiter.swift */,
+				ABCF38111C29659D00B32850 /* Token.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB3B66D81C2848CA00152024 /* Lexer.swift in Sources */,
+				ABCF38121C29659D00B32850 /* Token.swift in Sources */,
+				ABCF38101C29655800B32850 /* Delimiter.swift in Sources */,
 				AB3B66DA1C2848CA00152024 /* Scanner.swift in Sources */,
 				AB3B66D91C2848CA00152024 /* Mustache.swift in Sources */,
 			);
