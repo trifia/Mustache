@@ -17,6 +17,7 @@
 		ABCF38121C29659D00B32850 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38111C29659D00B32850 /* Token.swift */; };
 		ABCF38141C2967DA00B32850 /* Lookahead.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38131C2967DA00B32850 /* Lookahead.swift */; };
 		ABCF38161C2979C200B32850 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38151C2979C200B32850 /* Parser.swift */; };
+		ABCF38181C29850800B32850 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38171C29850800B32850 /* Stack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		ABCF38111C29659D00B32850 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		ABCF38131C2967DA00B32850 /* Lookahead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lookahead.swift; sourceTree = "<group>"; };
 		ABCF38151C2979C200B32850 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		ABCF38171C29850800B32850 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				ABCF38111C29659D00B32850 /* Token.swift */,
 				ABCF38131C2967DA00B32850 /* Lookahead.swift */,
 				ABCF38151C2979C200B32850 /* Parser.swift */,
+				ABCF38171C29850800B32850 /* Stack.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				ABCF38121C29659D00B32850 /* Token.swift in Sources */,
 				ABCF38101C29655800B32850 /* Delimiter.swift in Sources */,
 				AB3B66DA1C2848CA00152024 /* Scanner.swift in Sources */,
+				ABCF38181C29850800B32850 /* Stack.swift in Sources */,
 				ABCF38141C2967DA00B32850 /* Lookahead.swift in Sources */,
 				AB3B66D91C2848CA00152024 /* Mustache.swift in Sources */,
 				ABCF38161C2979C200B32850 /* Parser.swift in Sources */,
