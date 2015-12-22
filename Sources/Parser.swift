@@ -29,6 +29,7 @@ struct Parser {
     enum Operation {
         case RenderValue(value: String)
         case RenderVariable(name: String, escaped: Bool)
+        case RenderPartial(name: String)
         
         indirect case Main(operations: [Operation])
         indirect case Section(name: String, operations: [Operation])
@@ -66,11 +67,13 @@ struct Parser {
                     throw Error.SyntaxError("Section ended before it began…")
                 }
             case .Partial(let name):
-                print(name)
-                // FIXME: (stan@trifia.com)
+                operations.append(Operation.RenderPartial(name: name))
                 break;
-            case .Comment, .SetDelimiter:
-                // Ignore…
+            case .SetDelimiter:
+                // Set Delimiter is handled by the lexer… Ignoring…
+                break
+            case .Comment:
+                // Comments are naturally being ignored…
                 break
             }
         }
