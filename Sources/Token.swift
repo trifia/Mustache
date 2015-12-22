@@ -6,8 +6,6 @@
 //  Copyright © 2015 Trifia. All rights reserved.
 //
 
-import Foundation
-
 extension Lexer {
     enum Token {
         case Static(value: String)

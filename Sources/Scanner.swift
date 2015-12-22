@@ -6,8 +6,6 @@
 //  Copyright © 2015 Trifia. All rights reserved.
 //
 
-import Foundation
-
 struct ScanResult {
     /// The characters being scanned.
     let characters: String.CharacterView
