@@ -77,6 +77,15 @@ struct Scanner {
         return self.characters[range]
     }
     
+    func peek(distance: String.CharacterView.Index.Distance = 1) -> ScanResult {
+        let endIndex = self.index.advancedBy(distance, limit: self.endIndex)
+        if self.index.distanceTo(endIndex) == distance {
+            return ScanResult(characters: self.characters, before: self.index..<self.index, match: self.index..<endIndex, consumed: false)
+        } else {
+            return ScanResult(characters: self.characters, before: self.index..<self.index, match: nil, consumed: false)
+        }
+    }
+    
     /// Returns `true` if scan position has not reach the end.
     func hasNext() -> Bool {
         return self.index < self.endIndex

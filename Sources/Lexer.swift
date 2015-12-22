@@ -25,7 +25,7 @@ public func ==(lhs: String.CharacterView, rhs: String.CharacterView) -> Bool {
 struct Lexer {
     enum Token {
         // Tag Types
-        case Variable(name: String)
+        case Variable(name: String, escaped: Bool)
         case SectionBegin(name: String, inverted: Bool)
         case SectionEnd(name: String)
         case Comment(value: String)
@@ -37,8 +37,13 @@ struct Lexer {
     }
     
     struct Delimiter {
-        let open = "{{"
-        let close = "}}"
+        let open: String
+        let close: String
+        
+        init(open: String = "{{", close: String = "}}") {
+            self.open = open
+            self.close = close
+        }
     }
     
     // Context
@@ -55,6 +60,14 @@ struct Lexer {
         self.scanner = Scanner(string: data)
     }
     
+    func hasNext() -> Bool {
+        if self.lookahead != nil {
+            return true
+        } else {
+            return self.scanner.hasNext()
+        }
+    }
+    
     /// Consume the next token from the lexer.
     mutating func next() throws -> Token {
         if let lookahead = self.lookahead {
@@ -63,7 +76,8 @@ struct Lexer {
         }
         
         assert(self.scanner.hasNext())
-        var result = self.scanner.scanUntil(self.delimiter.open.characters)
+        var delimiter = self.delimiter
+        var result = self.scanner.scanUntil(delimiter.open.characters)
         
         var nextToken: Token? = nil
         if let staticCharacters = result.beforeCharacters {
@@ -72,13 +86,65 @@ struct Lexer {
         }
         
         if let openDelimiterRange = result.match {
-            let closeResult = self.scanner.scanUntil(self.delimiter.close.characters)
-            guard let closeDelimiterRange = closeResult.match else {
-                throw Error.SyntaxError("No matching closing delimiter. Expecting \(self.delimiter.close)…")
+            func __scanForTagRangeWithDelimiter(inout scanner: Scanner, delimiter: Delimiter, openDelimiterRange: Range<String.CharacterView.Index>) throws -> Range<String.CharacterView.Index> {
+                let closeResult = scanner.scanUntil(delimiter.close.characters)
+                guard let closeDelimiterRange = closeResult.match else {
+                    throw Error.SyntaxError("No matching closing delimiter. Expecting \(delimiter.close)…")
+                }
+                let tagRange = openDelimiterRange.endIndex..<closeDelimiterRange.startIndex
+                guard !tagRange.isEmpty else {
+                    throw Error.SyntaxError("Empty tag is not allowed…")
+                }
+                return tagRange
             }
             
-            let tagRange = openDelimiterRange.endIndex..<closeDelimiterRange.startIndex
-            let tagToken = Token.Variable(name: String(self.scanner[tagRange]))
+            var peekResult = self.scanner.peek()
+            
+            guard let peekRange = peekResult.match else {
+                throw Error.SyntaxError("Could not determine section… Likely reached end of file…")
+            }
+            let matchCharacter = peekResult.characters[peekRange]
+            var tagToken: Token!
+            switch String(matchCharacter) {
+            case "#": // Section Begin
+                self.scanner.skip(&peekResult)
+                let updatedOpenDelimiterRange = openDelimiterRange.startIndex..<peekRange.endIndex
+                let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: updatedOpenDelimiterRange)
+                tagToken = Token.SectionBegin(name: String(self.scanner[tagRange]), inverted: false)
+            case "^": // Section Begin (Inverted)
+                self.scanner.skip(&peekResult)
+                let updatedOpenDelimiterRange = openDelimiterRange.startIndex..<peekRange.endIndex
+                let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: updatedOpenDelimiterRange)
+                tagToken = Token.SectionBegin(name: String(self.scanner[tagRange]), inverted: true)
+            case "/": // Section End
+                self.scanner.skip(&peekResult)
+                let updatedOpenDelimiterRange = openDelimiterRange.startIndex..<peekRange.endIndex
+                let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: updatedOpenDelimiterRange)
+                tagToken = Token.SectionEnd(name: String(self.scanner[tagRange]))
+            case "!": // Comment
+                self.scanner.skip(&peekResult)
+                let updatedOpenDelimiterRange = openDelimiterRange.startIndex..<peekRange.endIndex
+                let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: updatedOpenDelimiterRange)
+                tagToken = Token.Comment(value: String(self.scanner[tagRange]))
+            case ">": // Partial
+                self.scanner.skip(&peekResult)
+                let updatedOpenDelimiterRange = openDelimiterRange.startIndex..<peekRange.endIndex
+                let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: updatedOpenDelimiterRange)
+                tagToken = Token.Partial(name: String(self.scanner[tagRange]))
+            case "=": // Set Delimiter
+                // FIXME: (stan@trifia.com) Update the delimiter.
+                fallthrough
+            case "{": // {
+                self.scanner.skip(&peekResult)
+                delimiter = Delimiter(open: delimiter.open + "{", close: "}" + delimiter.close)
+                let updatedOpenDelimiterRange = openDelimiterRange.startIndex..<peekRange.endIndex
+                let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: updatedOpenDelimiterRange)
+                tagToken = Token.Variable(name: String(self.scanner[tagRange]), escaped: false)
+            default: // Treated as variables
+                let tagRange = try __scanForTagRangeWithDelimiter(&self.scanner, delimiter: delimiter, openDelimiterRange: openDelimiterRange)
+                tagToken = Token.Variable(name: String(self.scanner[tagRange]), escaped: false)
+            }
+            
             if nextToken == nil {
                 nextToken = tagToken
             } else {
@@ -92,12 +158,12 @@ struct Lexer {
         return nextToken!
     }
     
-    mutating func tokens() throws -> [Token] {
+    mutating func tokenize() throws -> [Token] {
         var tokens = [Token]()
-        while self.scanner.hasNext() {
+        while self.hasNext() {
             tokens.append(try self.next())
         }
-        assert(!self.scanner.hasNext())
+        assert(!self.hasNext())
         return tokens
     }
 }
