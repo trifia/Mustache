@@ -10,6 +10,8 @@
 		AB3B66D81C2848CA00152024 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B66D51C2848CA00152024 /* Lexer.swift */; };
 		AB3B66D91C2848CA00152024 /* Mustache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B66D61C2848CA00152024 /* Mustache.swift */; };
 		AB3B66DA1C2848CA00152024 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B66D71C2848CA00152024 /* Scanner.swift */; };
+		AB5A87571C2A92260095E648 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A87561C2A92260095E648 /* Template.swift */; };
+		AB5A87591C2A92FB0095E648 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A87581C2A92FB0095E648 /* Operation.swift */; };
 		AB9DCEBE1C26A8BC00B277FC /* Mustache.h in Headers */ = {isa = PBXBuildFile; fileRef = AB9DCEBD1C26A8BC00B277FC /* Mustache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB9DCEC51C26A8BD00B277FC /* Mustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9DCEBA1C26A8BC00B277FC /* Mustache.framework */; };
 		AB9DCECA1C26A8BD00B277FC /* MustacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DCEC91C26A8BD00B277FC /* MustacheTests.swift */; };
@@ -34,6 +36,8 @@
 		AB3B66D51C2848CA00152024 /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		AB3B66D61C2848CA00152024 /* Mustache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mustache.swift; sourceTree = "<group>"; };
 		AB3B66D71C2848CA00152024 /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		AB5A87561C2A92260095E648 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		AB5A87581C2A92FB0095E648 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		AB9DCEBA1C26A8BC00B277FC /* Mustache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mustache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9DCEBD1C26A8BC00B277FC /* Mustache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mustache.h; sourceTree = "<group>"; };
 		AB9DCEBF1C26A8BC00B277FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 				ABCF38131C2967DA00B32850 /* Lookahead.swift */,
 				ABCF38151C2979C200B32850 /* Parser.swift */,
 				ABCF38171C29850800B32850 /* Stack.swift */,
+				AB5A87561C2A92260095E648 /* Template.swift */,
+				AB5A87581C2A92FB0095E648 /* Operation.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -229,6 +235,8 @@
 				AB3B66D81C2848CA00152024 /* Lexer.swift in Sources */,
 				ABCF38121C29659D00B32850 /* Token.swift in Sources */,
 				ABCF38101C29655800B32850 /* Delimiter.swift in Sources */,
+				AB5A87591C2A92FB0095E648 /* Operation.swift in Sources */,
+				AB5A87571C2A92260095E648 /* Template.swift in Sources */,
 				AB3B66DA1C2848CA00152024 /* Scanner.swift in Sources */,
 				ABCF38181C29850800B32850 /* Stack.swift in Sources */,
 				ABCF38141C2967DA00B32850 /* Lookahead.swift in Sources */,

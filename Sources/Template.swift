@@ -1,5 +1,5 @@
 //
-// Stack.swift
+// Template.swift
 //
 // Copyright (c) 2015 Trifia (http://trifia.com/)
 //
@@ -21,19 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// Extracted Apple's Swift Programming Guide
-struct Stack<Element> {
-    var items = [Element]()
-    mutating func push(item: Element) {
-        items.append(item)
+struct Template {
+    let operation: Operation
+    
+    func compile() {
     }
-    mutating func pop() -> Element {
-        return items.removeLast()
-    }
-}
-
-extension Stack {
-    var topItem: Element? {
-        return items.isEmpty ? nil : items[items.count - 1]
+    
+    func render(context: Any) {
     }
 }

@@ -26,15 +26,6 @@ struct Parser {
         case Main
         case Section(name: String, inverted: Bool)
     }
-    enum Operation {
-        case RenderValue(value: String)
-        case RenderVariable(name: String, escaped: Bool)
-        case RenderPartial(name: String)
-        
-        indirect case Main(operations: [Operation])
-        indirect case Section(name: String, operations: [Operation])
-        indirect case InvertedSection(name: String, operations: [Operation])
-    }
     
     let tokens: Array<Lexer.Token>
     

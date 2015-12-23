@@ -1,5 +1,5 @@
 //
-// Stack.swift
+// Operation.swift
 //
 // Copyright (c) 2015 Trifia (http://trifia.com/)
 //
@@ -21,19 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// Extracted Apple's Swift Programming Guide
-struct Stack<Element> {
-    var items = [Element]()
-    mutating func push(item: Element) {
-        items.append(item)
-    }
-    mutating func pop() -> Element {
-        return items.removeLast()
-    }
-}
-
-extension Stack {
-    var topItem: Element? {
-        return items.isEmpty ? nil : items[items.count - 1]
-    }
+enum Operation {
+    case RenderValue(value: String)
+    case RenderVariable(name: String, escaped: Bool)
+    case RenderPartial(name: String)
+    
+    indirect case Main(operations: [Operation])
+    indirect case Section(name: String, operations: [Operation])
+    indirect case InvertedSection(name: String, operations: [Operation])
 }
