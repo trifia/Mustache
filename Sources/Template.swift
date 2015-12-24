@@ -24,9 +24,14 @@
 struct Template {
     let operation: Operation
     
-    func compile() {
+    init(operation: Operation) throws {
+        guard case Operation.Main(operations: _) = operation else {
+            throw Error.SyntaxError("Template can only hold main operation as it root.")
+        }
+        self.operation = operation
     }
     
-    func render(context: Any) {
+    func render(context: Contextual) -> String? {
+        return context.renderWithOperation(operation)
     }
 }

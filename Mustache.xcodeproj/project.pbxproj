@@ -12,9 +12,11 @@
 		AB3B66DA1C2848CA00152024 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B66D71C2848CA00152024 /* Scanner.swift */; };
 		AB5A87571C2A92260095E648 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A87561C2A92260095E648 /* Template.swift */; };
 		AB5A87591C2A92FB0095E648 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A87581C2A92FB0095E648 /* Operation.swift */; };
+		AB5A875B1C2B74310095E648 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A875A1C2B74310095E648 /* Context.swift */; };
 		AB9DCEBE1C26A8BC00B277FC /* Mustache.h in Headers */ = {isa = PBXBuildFile; fileRef = AB9DCEBD1C26A8BC00B277FC /* Mustache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB9DCEC51C26A8BD00B277FC /* Mustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9DCEBA1C26A8BC00B277FC /* Mustache.framework */; };
 		AB9DCECA1C26A8BD00B277FC /* MustacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DCEC91C26A8BD00B277FC /* MustacheTests.swift */; };
+		ABCB02BF1C2BA45F00BED745 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCB02BE1C2BA45F00BED745 /* Renderer.swift */; };
 		ABCF38101C29655800B32850 /* Delimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF380F1C29655800B32850 /* Delimiter.swift */; };
 		ABCF38121C29659D00B32850 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38111C29659D00B32850 /* Token.swift */; };
 		ABCF38141C2967DA00B32850 /* Lookahead.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF38131C2967DA00B32850 /* Lookahead.swift */; };
@@ -38,12 +40,14 @@
 		AB3B66D71C2848CA00152024 /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		AB5A87561C2A92260095E648 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		AB5A87581C2A92FB0095E648 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		AB5A875A1C2B74310095E648 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		AB9DCEBA1C26A8BC00B277FC /* Mustache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mustache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9DCEBD1C26A8BC00B277FC /* Mustache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mustache.h; sourceTree = "<group>"; };
 		AB9DCEBF1C26A8BC00B277FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB9DCEC41C26A8BD00B277FC /* MustacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MustacheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9DCEC91C26A8BD00B277FC /* MustacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustacheTests.swift; sourceTree = "<group>"; };
 		AB9DCECB1C26A8BD00B277FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABCB02BE1C2BA45F00BED745 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		ABCF380F1C29655800B32850 /* Delimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delimiter.swift; sourceTree = "<group>"; };
 		ABCF38111C29659D00B32850 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		ABCF38131C2967DA00B32850 /* Lookahead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lookahead.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				ABCF38171C29850800B32850 /* Stack.swift */,
 				AB5A87561C2A92260095E648 /* Template.swift */,
 				AB5A87581C2A92FB0095E648 /* Operation.swift */,
+				AB5A875A1C2B74310095E648 /* Context.swift */,
+				ABCB02BE1C2BA45F00BED745 /* Renderer.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -236,6 +242,8 @@
 				ABCF38121C29659D00B32850 /* Token.swift in Sources */,
 				ABCF38101C29655800B32850 /* Delimiter.swift in Sources */,
 				AB5A87591C2A92FB0095E648 /* Operation.swift in Sources */,
+				ABCB02BF1C2BA45F00BED745 /* Renderer.swift in Sources */,
+				AB5A875B1C2B74310095E648 /* Context.swift in Sources */,
 				AB5A87571C2A92260095E648 /* Template.swift in Sources */,
 				AB3B66DA1C2848CA00152024 /* Scanner.swift in Sources */,
 				ABCF38181C29850800B32850 /* Stack.swift in Sources */,

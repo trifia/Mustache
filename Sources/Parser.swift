@@ -49,14 +49,12 @@ struct Parser {
                 stack.push((scope, operations))
                 (scope, operations) = (Scope.Section(name: name, inverted: inverted), [Operation]())
             case .SectionEnd(let endName):
-                switch scope {
-                case .Section(let name, let inverted) where name == endName:
-                    let section = inverted ? Operation.InvertedSection(name: name, operations: operations) : Operation.Section(name: name, operations: operations)
-                    (scope, operations) = stack.pop()
-                    operations.append(section)
-                default:
+                guard case Scope.Section(let name, let inverted) = scope where name == endName else {
                     throw Error.SyntaxError("Section ended before it began…")
                 }
+                let section = inverted ? Operation.InvertedSection(name: name, operations: operations) : Operation.Section(name: name, operations: operations)
+                (scope, operations) = stack.pop()
+                operations.append(section)
             case .Partial(let name):
                 operations.append(Operation.RenderPartial(name: name))
                 break;
@@ -68,10 +66,10 @@ struct Parser {
                 break
             }
         }
-        switch scope {
-        case .Main:
+        
+        if case Scope.Main = scope {
             return Operation.Main(operations: operations)
-        default:
+        } else {
             throw Error.SyntaxError("Section not closed before file ended…")
         }
     }
