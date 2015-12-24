@@ -11,12 +11,9 @@ import XCTest
 
 class MustacheTests: XCTestCase {
     func testExample() {
-        var lexer = Lexer("Hello {{name}}")
+        let string = "Hello {{name}}"
         do {
-            let tokens = try lexer.tokenize()
-            let parser = Parser(tokens: tokens)
-            let mainOperation = try parser.parse()
-            let template = try! Template(operation: mainOperation)
+            let template = try Mustache.compile(string)
             let context: DictionaryContext = [
                 "name": "Stan"
             ]
@@ -43,12 +40,10 @@ class MustacheTests: XCTestCase {
     }
     
     func testExample3() {
-        var lexer = Lexer("{{#in_ca}}\nWell, {{taxed_value}} dollars, after taxes.\n{{/in_ca}}{{^in_ca}}\nNo tax burden!\n{{/in_ca}}")
+        let string = "{{#in_ca}}\nWell, {{taxed_value}} dollars, after taxes.\n{{/in_ca}}{{^in_ca}}\nNo tax burden!\n{{/in_ca}}"
         do {
-            let tokens = try lexer.tokenize()
-            let parser = Parser(tokens: tokens)
-            let mainOperation = try parser.parse()
-            let template = try! Template(operation: mainOperation)
+            let template = try Mustache.compile(string)
+            
             let context: DictionaryContext = [
                 "in_ca": ArrayContext([
                     DictionaryContext([
@@ -80,12 +75,9 @@ class MustacheTests: XCTestCase {
     }
     
     func testExample4() {
-        var lexer = Lexer("    * {{name}}\n    * {{age}}\n    * {{company}}\n    * {{{company}}}\n    * {{&company}}")
+        let string = "    * {{name}}\n    * {{age}}\n    * {{company}}\n    * {{{company}}}\n    * {{&company}}"
         do {
-            let tokens = try lexer.tokenize()
-            let parser = Parser(tokens: tokens)
-            let mainOperation = try parser.parse()
-            let template = try! Template(operation: mainOperation)
+            let template = try Mustache.compile(string)
             let context: DictionaryContext = [
                 "name": "Stan",
                 "age": "29",
@@ -101,6 +93,20 @@ class MustacheTests: XCTestCase {
         // This is an example of a performance test case.
         self.measureBlock {
             // Put the code you want to measure the time of here.
+            for _ in 0..<1000 {
+                let string = "    * {{name}}\n    * {{age}}\n    * {{company}}\n    * {{{company}}}\n    * {{&company}}"
+                do {
+                    let template = try Mustache.compile(string)
+                    let context: DictionaryContext = [
+                        "name": "Stan",
+                        "age": "29",
+                        "company": "trifia",
+                    ]
+                    _ = template.render(context)
+                } catch {
+                    XCTFail()
+                }
+            }
         }
     }
     

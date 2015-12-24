@@ -49,6 +49,14 @@ enum Error : ErrorType {
     case SyntaxError(String)
 }
 
-
-
-// The parser
+struct Mustache {
+    static func compile(string: String) throws -> Template {
+        var lexer = Lexer(string)
+        let tokens = try lexer.tokenize()
+        
+        let parser = Parser(tokens: tokens)
+        let mainOperation = try parser.parse()
+        
+        return try Template(operation: mainOperation)
+    }
+}
