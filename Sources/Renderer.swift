@@ -6,6 +6,11 @@
 //  Copyright © 2015 Trifia. All rights reserved.
 //
 
+protocol Renderable {
+    func renderWithOperation(operation: Operation) -> String?
+    func renderWithOperations(operations: [Operation]) -> String?
+}
+
 // Renderer render the operation(s) with the provided context if possible.
 // Otherwise, it give control to the context, which based on its underlying implementation provide some form of control flow. The context might pass back control to renderer to attempt to rendering its subcontext. This resultant in a recursive rendering process.
 struct Renderer {

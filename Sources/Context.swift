@@ -6,10 +6,8 @@
 //  Copyright © 2015 Trifia. All rights reserved.
 //
 
-protocol Contextual : CustomStringConvertible {
+protocol Contextual : CustomStringConvertible, Renderable {
     func contextForName(name: String) -> Contextual?
-    func renderWithOperation(operation: Operation) -> String?
-    func renderWithOperations(operations: [Operation]) -> String?
 }
 
 // MARK: Extensions
