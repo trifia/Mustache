@@ -89,24 +89,30 @@ class MustacheTests: XCTestCase {
         }
     }
     
+    func testExample5() {
+        let string = "{{#a}}\n{{one}}\n{{#b}}\n{{one}}{{two}}{{one}}\n{{#c}}\n{{one}}{{two}}{{three}}{{two}}{{one}}\n{{#d}}\n{{one}}{{two}}{{three}}{{four}}{{three}}{{two}}{{one}}\n{{#e}}\n{{one}}{{two}}{{three}}{{four}}{{five}}{{four}}{{three}}{{two}}{{one}}\n{{/e}}\n{{one}}{{two}}{{three}}{{four}}{{three}}{{two}}{{one}}\n{{/d}}\n{{one}}{{two}}{{three}}{{two}}{{one}}\n{{/c}}\n{{one}}{{two}}{{one}}\n{{/b}}\n{{one}}\n{{/a}}"
+        do {
+            let template = try Mustache.compile(string)
+            print(template.operation)
+            let context: DictionaryContext = [
+                "a" : DictionaryContext([ "one" : "1" ]),
+                "b" : DictionaryContext([ "two" : "2" ]),
+                "c" : DictionaryContext([ "three" : "3" ]),
+                "d" : DictionaryContext([ "four" : "4" ]),
+                "e" : DictionaryContext([ "five" : "5" ]),
+            ]
+            if let renderedString = template.render(context) {
+                print(renderedString)
+            }
+        } catch {
+            XCTFail()
+        }
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
             // Put the code you want to measure the time of here.
-            for _ in 0..<1000 {
-                let string = "    * {{name}}\n    * {{age}}\n    * {{company}}\n    * {{{company}}}\n    * {{&company}}"
-                do {
-                    let template = try Mustache.compile(string)
-                    let context: DictionaryContext = [
-                        "name": "Stan",
-                        "age": "29",
-                        "company": "trifia",
-                    ]
-                    _ = template.render(context)
-                } catch {
-                    XCTFail()
-                }
-            }
         }
     }
     
