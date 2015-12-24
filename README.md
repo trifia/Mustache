@@ -1,3 +1,7 @@
+# Status
+
+Development will continue some time in January 2016. The basic functionality is done. I considered a first alpha build.
+
 # Mustache
 
 A Mustache Templating Engine in Swift.
